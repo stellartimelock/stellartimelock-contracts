@@ -1,0 +1,21 @@
+[package]
+name = "flexible_vesting"
+version = "1.0.0"
+edition = "2021"
+publish = false
+description = "Flexible daily vesting (skip today / double today) for Stellar TimeLock"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]
+# TESTNET ONLY: 1 day = 120 s. Never deploy to mainnet.
+fast-clock = []
